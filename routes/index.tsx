@@ -34,10 +34,10 @@ export const handler: Handlers<SearchData> = {
       try {
         let apiUrl = `${url.origin}/api/movies?`;
         const params = new URLSearchParams();
-        
+
         if (query) params.append("query", query);
         if (year) params.append("year", year);
-        
+
         apiUrl += params.toString();
 
         const response = await fetch(apiUrl);
@@ -87,7 +87,7 @@ export default function Home({ data }: PageProps<SearchData>) {
         <title>Movie Finder</title>
         <meta name="description" content="Search for movies" />
       </Head>
-      
+
       <div className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}

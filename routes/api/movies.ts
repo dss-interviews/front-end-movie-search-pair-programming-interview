@@ -21,29 +21,33 @@ export const handler: Handlers = {
     try {
       const moviesData = await Deno.readTextFile("./data/movies.json");
       const movies: Movie[] = JSON.parse(moviesData);
-      
+
       let filteredMovies = movies;
 
       if (query && query.trim()) {
-        filteredMovies = filteredMovies.filter(movie => 
-          movie.title.toLowerCase().includes(query.toLowerCase()) ||
-          movie.overview.toLowerCase().includes(query.toLowerCase())
+        filteredMovies = filteredMovies.filter(
+          (movie) =>
+            movie.title.toLowerCase().includes(query.toLowerCase()) ||
+            movie.overview.toLowerCase().includes(query.toLowerCase())
         );
       }
 
       if (year) {
-        filteredMovies = filteredMovies.filter(movie => 
+        filteredMovies = filteredMovies.filter((movie) =>
           movie.release_date.startsWith(year)
         );
       }
-      
-      return new Response(JSON.stringify({
-        movies: filteredMovies,
-        total_results: filteredMovies.length,
-        page: 1,
-      }), {
-        headers: { "Content-Type": "application/json" },
-      });
+
+      return new Response(
+        JSON.stringify({
+          movies: filteredMovies,
+          total_results: filteredMovies.length,
+          page: 1,
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     } catch (error) {
       return new Response(JSON.stringify({ error: (error as Error).message }), {
         status: 500,

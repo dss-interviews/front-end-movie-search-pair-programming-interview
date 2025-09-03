@@ -1,8 +1,8 @@
 # Movie Finder
 
-A movie search application built with Fresh framework and Deno. Search for movies by name, genre, and year using The Movie Database API.
+A movie search application built with Fresh framework, Deno, using [Tailwind CSS](https://tailwindcss.com/) for styling. Search for movies by name and year using a simple local data API.
 
-[Deno](https://docs.deno.com/runtime/) is a modern JavaScript/TypeScript runtime with built-in security, package management, and tooling.
+[Deno](https://docs.deno.com/runtime/) is a modern TypeScript runtime with built-in security, package management, and tooling.
 
 ## Quick Start
 
@@ -49,6 +49,7 @@ That's it! The app is now running. 🎬
 
 - `routes/index.tsx` - Main route handler and UI component
 - `routes/api/movies.ts` - API endpoint for movie search
+- `data/movies.json` - Local movie data source
 - `deno.json` - Deno configuration and tasks
 - `static/` - Static assets and styles
 - `docs/` - Documentation including user stories
