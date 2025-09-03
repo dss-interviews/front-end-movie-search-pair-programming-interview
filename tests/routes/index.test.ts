@@ -1,23 +1,17 @@
-import { assertEquals } from "https://deno.land/std@0.208.0/assert/mod.ts";
-import { handler } from "../../routes/index.tsx";
+import { assertExists } from "https://deno.land/std@0.208.0/assert/mod.ts";
+import Home from "../../routes/index.tsx";
+import SearchForm from "../../islands/SearchForm.tsx";
 
 Deno.test(
-  "should return empty search state when no parameters provided",
-  async () => {
-    // Arrange: Set up test data
-    const request = new Request("http://localhost:8000/");
-    const mockContext = {
-      render: (data: any) => new Response(JSON.stringify(data)),
-    };
-
+  "should render SearchForm component",
+  () => {
     // Act: Execute the code being tested
-    if (!handler.GET) throw new Error("GET handler not found");
-    const response = await handler.GET(request, mockContext as any);
-    const data = await response.json();
+    const result = Home();
 
-    // Assert: Check the results
-    assertEquals(data.query, "");
-    assertEquals(data.movies, []);
-    assertEquals(data.loading, false);
+    // Assert: Check it renders SearchForm
+    const searchFormElement = result.props.children.find(
+      (child: any) => child.type === SearchForm
+    );
+    assertExists(searchFormElement);
   }
 );
