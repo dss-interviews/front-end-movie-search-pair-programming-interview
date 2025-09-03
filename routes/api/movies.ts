@@ -42,6 +42,13 @@ export const handler: Handlers = {
         );
       }
 
+      filteredMovies = filteredMovies.map(movie => ({
+        ...movie,
+        poster_path: movie.poster_path ? 
+          movie.poster_path.replace('/commons/', '/commons/thumb/') + '/300px-' + movie.poster_path.split('/').pop() 
+          : movie.poster_path
+      }));
+
       return new Response(
         JSON.stringify({
           movies: filteredMovies,
