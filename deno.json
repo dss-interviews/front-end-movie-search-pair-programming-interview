@@ -1,7 +1,7 @@
 {
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "test": "deno test --allow-all --allow-env"
+    "test": "deno test --allow-all"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
