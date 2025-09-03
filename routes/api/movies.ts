@@ -13,6 +13,10 @@ interface Movie {
 
 export const handler: Handlers = {
   async GET(req) {
+
+    // Simulate realistic API latency
+    await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 200));
+    
     const url = new URL(req.url);
     const query = url.searchParams.get("query") || "";
 

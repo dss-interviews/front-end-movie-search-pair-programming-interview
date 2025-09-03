@@ -14,6 +14,10 @@ deno.lock
 # Environment variables
 .env
 
+# Local docs
+private
+
 # AI Tools
+.amazonq*
 CLAUDE.md
 

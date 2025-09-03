@@ -1,12 +1,34 @@
 # Movie Finder
 
-A movie search application built with Fresh framework, Deno, using [Tailwind CSS](https://tailwindcss.com/) for styling. Search for movies by name and year using a simple local data API.
+A movie search application built with Deno's Fresh framework, using [Tailwind CSS](https://tailwindcss.com/) for styling. Search for movies by name and year using a simple local data API.
 
 [Deno](https://docs.deno.com/runtime/) is a modern TypeScript runtime with built-in security, package management, and tooling.
 
 ## Purpose
 
 This project is designed for use in a pair programming portion of an interview. See [docs/user-stories.md](docs/user-stories.md) for the specific user stories to work on during the coding exercise.
+
+
+## Deno
+
+If you're coming from React and Node.js, here's what's different:
+
+**Deno vs Node.js:**
+- Deno is the runtime (like Node.js) but with built-in TypeScript, security, and web standards
+- No `package.json` or `node_modules` - uses URL imports and import maps
+- Secure by default - requires explicit permissions
+
+**Fresh vs Next.js/React:**
+- Fresh is the web framework (like Next.js) but runs on Deno
+- Uses Preact (React-compatible) with islands architecture
+- `routes/` folder for file-based routing (server-side)
+- `islands/` folder for client-side interactive components (can use hooks)
+- No build step required - TypeScript works out of the box
+
+**Key Concepts:**
+- **Routes** (`routes/*.tsx`) - Server-side components, handle requests and render initial HTML
+- **Islands** (`islands/*.tsx`) - Client-side components, can use `useState`, `useEffect`, event handlers
+- **API Routes** (`routes/api/*.ts`) - Backend endpoints (like Next.js API routes)
 
 ## Quick Start
 

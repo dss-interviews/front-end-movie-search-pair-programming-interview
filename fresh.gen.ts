@@ -4,7 +4,7 @@
 
 import * as $api_movies from "./routes/api/movies.ts";
 import * as $index from "./routes/index.tsx";
-
+import * as $SearchForm from "./islands/SearchForm.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -12,7 +12,9 @@ const manifest = {
     "./routes/api/movies.ts": $api_movies,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/SearchForm.tsx": $SearchForm,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
