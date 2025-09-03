@@ -93,7 +93,6 @@ export default function Home({ data }: PageProps<SearchData>) {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Movie Finder</h1>
-            <p className="text-gray-600">Search for your favorite movies</p>
           </div>
 
           {/* Search Form */}
