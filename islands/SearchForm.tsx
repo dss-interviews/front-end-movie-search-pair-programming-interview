@@ -32,7 +32,7 @@ export default function SearchForm() {
     try {
       const response = await fetch(`/api/movies?${params}`);
       const data = await response.json();
-      let results = data.movies || [];
+      const results = data.movies || [];
       
       // Sort movies based on sortBy parameter
       if (sortBy === "rating") {

@@ -51,9 +51,14 @@ deno task start
 
 # Run tests
 deno task test
+
+# Run linting
+deno lint
 ```
 
 Full [Installation intructions](https://docs.deno.com/runtime/getting_started/installation/) are available on the Deno documentation site.
+
+**VS Code Extension:** Optionally, you can install the [Deno extension](https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno) for autocomplete, formatting, and linting support.
 
 **Note:** The development server runs with full permissions (`-A`) for Fresh framework functionality.
 
