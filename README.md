@@ -53,6 +53,8 @@ deno task start
 deno task test
 ```
 
+Full [Installation intructions](https://docs.deno.com/runtime/getting_started/installation/) are available on the Deno documentation site.
+
 **Note:** The development server runs with full permissions (`-A`) for Fresh framework functionality.
 
 ### 5. Open in Browser
