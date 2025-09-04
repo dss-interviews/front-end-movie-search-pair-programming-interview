@@ -90,5 +90,5 @@ Further [Installation intructions](https://docs.deno.com/runtime/getting_started
 - `fresh.gen.ts` - Auto-generated Fresh manifest
 
 
-### User Stories
+## User Stories
 See [docs/user-stories.md](docs/user-stories.md) for the specific user stories to work on during the coding exercise.
