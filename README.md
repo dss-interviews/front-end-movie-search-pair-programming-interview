@@ -2,12 +2,11 @@
 
 A movie search application built with [Deno's Fresh framework](https://fresh.deno.dev/), using [Tailwind CSS](https://tailwindcss.com/) for styling. Search for movies by name and year using a simple local data API.
 
-[Deno](https://docs.deno.com/runtime/) is a modern TypeScript runtime with built-in security, package management, and tooling.
+[Deno](https://docs.deno.com/runtime/) is a TypeScript runtime with built-in security, package management, and tooling.
 
 ## Purpose
 
-This project is designed for use in a pair programming portion of an interview. See [docs/user-stories.md](docs/user-stories.md) for the specific user stories to work on during the coding exercise.
-
+This project is designed for use in a pair programming portion of an interview. See [docs/user-stories.md](docs/user-stories.md) for the specific user stories to work on during the coding exercise. During the interview you will ask you to share your screen.
 
 ## Deno
 
