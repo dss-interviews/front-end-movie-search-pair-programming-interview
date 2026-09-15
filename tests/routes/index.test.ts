@@ -10,8 +10,8 @@ Deno.test(
 
     // Assert: Check it renders SearchForm
     const searchFormElement = result.props.children.find(
-      (child: { type: unknown }) => child.type === SearchForm
+      (child: { type: unknown }) => child.type === SearchForm,
     );
     assertExists(searchFormElement);
-  }
+  },
 );
