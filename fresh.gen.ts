@@ -2,7 +2,6 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $api_genres from "./routes/api/genres.ts";
 import * as $api_movies from "./routes/api/movies.ts";
 import * as $index from "./routes/index.tsx";
 import * as $SearchForm from "./islands/SearchForm.tsx";
@@ -10,7 +9,6 @@ import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/api/genres.ts": $api_genres,
     "./routes/api/movies.ts": $api_movies,
     "./routes/index.tsx": $index,
   },

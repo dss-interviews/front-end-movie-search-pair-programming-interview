@@ -20,7 +20,6 @@ export const handler: Handlers = {
     const url = new URL(req.url);
     const query = url.searchParams.get("query") || "";
     const year = url.searchParams.get("year") || "";
-    const genre = url.searchParams.get("genre") || "";
 
     try {
       const moviesData = await Deno.readTextFile("./data/movies.json");
@@ -39,12 +38,6 @@ export const handler: Handlers = {
       if (year) {
         filteredMovies = filteredMovies.filter((movie) =>
           movie.release_date.startsWith(year)
-        );
-      }
-
-      if (genre) {
-        filteredMovies = filteredMovies.filter((movie) =>
-          movie.genres.includes(genre)
         );
       }
 
