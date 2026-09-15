@@ -90,6 +90,8 @@ Further [Installation intructions](https://docs.deno.com/runtime/getting_started
 
 - `routes/index.tsx` - Main route handler and UI component
 - `routes/api/movies.ts` - API endpoint for movie search
+- `routes/api/genres.ts` - API endpoint for available genres
+- `components/MovieTile.tsx` - Movie result display
 - `data/movies.json` - Local movie data source
 - `deno.json` - Deno configuration and tasks
 - `static/` - Static assets and styles

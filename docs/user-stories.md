@@ -43,6 +43,9 @@ Treat us as your pairing partner and talk through your thinking as you work.
 **I want to** filter movies by genre\
 **So that** I can narrow the results to films I might enjoy
 
+Genre options are available from `GET /api/genres`. The movie search endpoint
+accepts a `genre` query parameter.
+
 ### Acceptance criteria
 
 - [ ] Add a genre filter
