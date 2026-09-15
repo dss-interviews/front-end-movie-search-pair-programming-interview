@@ -12,13 +12,13 @@ interface Movie {
 
 export const handler: Handlers = {
   async GET(req) {
-
     // Simulate realistic API latency
-    await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 1000));
-    
+    await new Promise((resolve) =>
+      setTimeout(resolve, 50 + Math.random() * 1000)
+    );
+
     const url = new URL(req.url);
     const query = url.searchParams.get("query") || "";
-
     const year = url.searchParams.get("year") || "";
 
     try {
@@ -31,7 +31,7 @@ export const handler: Handlers = {
         filteredMovies = filteredMovies.filter(
           (movie) =>
             movie.title.toLowerCase().includes(query.toLowerCase()) ||
-            movie.overview.toLowerCase().includes(query.toLowerCase())
+            movie.overview.toLowerCase().includes(query.toLowerCase()),
         );
       }
 
@@ -41,11 +41,12 @@ export const handler: Handlers = {
         );
       }
 
-      filteredMovies = filteredMovies.map(movie => ({
+      filteredMovies = filteredMovies.map((movie) => ({
         ...movie,
-        poster_path: movie.poster_path ? 
-          movie.poster_path.replace('/commons/', '/commons/thumb/') + '/300px-' + movie.poster_path.split('/').pop() 
-          : movie.poster_path
+        poster_path: movie.poster_path
+          ? movie.poster_path.replace("/commons/", "/commons/thumb/") +
+            "/300px-" + movie.poster_path.split("/").pop()
+          : movie.poster_path,
       }));
 
       return new Response(
@@ -56,7 +57,7 @@ export const handler: Handlers = {
         }),
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     } catch (error) {
       return new Response(JSON.stringify({ error: (error as Error).message }), {

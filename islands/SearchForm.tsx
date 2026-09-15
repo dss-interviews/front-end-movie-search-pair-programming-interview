@@ -1,12 +1,8 @@
 import { useState } from "preact/hooks";
+import MovieTile, { type Movie } from "../components/MovieTile.tsx";
 
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-  release_date: string;
-  vote_average: number;
+interface MoviesResponse {
+  movies: Movie[];
 }
 
 export default function SearchForm() {
@@ -18,22 +14,26 @@ export default function SearchForm() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    
+
     const formData = new FormData(e.target as HTMLFormElement);
     const params = new URLSearchParams();
-    
+
     const query = formData.get("query") as string;
     const year = formData.get("year") as string;
     const sortBy = formData.get("sortBy") as string;
-    
+
     if (query) params.append("query", query);
     if (year) params.append("year", year);
-    
+
     try {
       const response = await fetch(`/api/movies?${params}`);
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error("Unable to search for movies. Please try again.");
+      }
+
+      const data = await response.json() as MoviesResponse;
       const results = data.movies || [];
-      
+
       // Sort movies based on sortBy parameter
       if (sortBy === "rating") {
         results.sort((a: Movie, b: Movie) => b.vote_average - a.vote_average);
@@ -48,7 +48,7 @@ export default function SearchForm() {
           return dateB.getTime() - dateA.getTime();
         });
       }
-      
+
       setMovies(results);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
@@ -61,14 +61,19 @@ export default function SearchForm() {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Movie Finder</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Movie Finder
+          </h1>
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label htmlFor="query" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="query"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Title or Keyword(s)
                 </label>
                 <input
@@ -81,7 +86,10 @@ export default function SearchForm() {
               </div>
 
               <div>
-                <label htmlFor="year" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="year"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Year
                 </label>
                 <input
@@ -96,7 +104,10 @@ export default function SearchForm() {
               </div>
 
               <div>
-                <label htmlFor="sortBy" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="sortBy"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Sort By
                 </label>
                 <select
@@ -104,7 +115,6 @@ export default function SearchForm() {
                   name="sortBy"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
-                  <option value="popularity">Popularity</option>
                   <option value="rating">Rating</option>
                   <option value="title">Title</option>
                   <option value="date">Release Date</option>
@@ -137,29 +147,7 @@ export default function SearchForm() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {movies.map((movie) => (
-                <div key={movie.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="relative">
-                    <img
-                      src={movie.poster_path || "https://placehold.co/300x450/e5e7eb/6b7280?text=No+Poster"}
-                      alt={movie.title}
-                      className="w-full h-64 sm:h-80 object-cover"
-                    />
-                    <div className="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-                      ⭐ {movie.vote_average.toFixed(1)}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
-                      {movie.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      {movie.release_date ? new Date(movie.release_date).getFullYear() : "Unknown"}
-                    </p>
-                    <p className="text-gray-700 text-sm line-clamp-3">
-                      {movie.overview || "No description available"}
-                    </p>
-                  </div>
-                </div>
+                <MovieTile key={movie.id} movie={movie} />
               ))}
             </div>
           </div>
@@ -168,8 +156,12 @@ export default function SearchForm() {
         {!loading && movies.length === 0 && !error && (
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <div className="text-6xl mb-4">🍿</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Welcome to Movie Finder</h3>
-            <p className="text-gray-600">Use the search form above to find movies by keyword or year.</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              Welcome to Movie Finder
+            </h3>
+            <p className="text-gray-600">
+              Use the search form above to find movies by keyword or year.
+            </p>
           </div>
         )}
       </div>
