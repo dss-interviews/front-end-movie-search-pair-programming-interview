@@ -45,7 +45,7 @@ export const handler: Handlers = {
         ...movie,
         poster_path: movie.poster_path
           ? movie.poster_path.replace("/commons/", "/commons/thumb/") +
-            "/300px-" + movie.poster_path.split("/").pop()
+            "/250px-" + movie.poster_path.split("/").pop()
           : movie.poster_path,
       }));
 
