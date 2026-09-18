@@ -19,10 +19,9 @@ Treat us as your pairing partner and talk through your thinking as you work.
 
 ### Acceptance criteria
 
-- [ ] Search results update automatically when the title or keyword changes
-- [ ] Wait 300 ms after the user stops typing before searching
-- [ ] The user does not need to select the search button
-- [ ] If requests overlap, only results for the latest search are shown
+- [ ] Results update automatically as the user types, without pressing a search button
+- [ ] Typing shouldn't flood the app with a request per keystroke — searching should feel responsive, not janky
+- [ ] The movies on screen always reflect the most recent search, even though network responses can arrive in a different order than they were sent
 
 ## Story 2: Search feedback
 
@@ -45,10 +44,10 @@ Treat us as your pairing partner and talk through your thinking as you work.
 
 ### Acceptance criteria
 
-- [ ] Add a genre filter
-- [ ] Combine the genre with the current search
-- [ ] Update results when the genre changes
-- [ ] Allow the genre filter to be cleared
+- [ ] The user can narrow results to a specific genre
+- [ ] Genre and search combine — results reflect both at once, not one or the other
+- [ ] Results update when the genre selection changes
+- [ ] The genre filter can be cleared back to showing all genres
 
 ## Story 4: Release year and rating filters
 
@@ -58,10 +57,10 @@ Treat us as your pairing partner and talk through your thinking as you work.
 
 ### Acceptance criteria
 
-- [ ] Replace the single year field with a release year range
-- [ ] Add a minimum rating filter
-- [ ] Combine these filters with the current search and genre
-- [ ] Update results when a filter changes
+- [ ] The user can narrow results to a release year range, not just a single exact year
+- [ ] The user can filter out movies below a minimum rating
+- [ ] These combine with the current search and genre, not replace them
+- [ ] Results update as any filter changes
 
 ## Story 5: Active filters
 
@@ -71,10 +70,10 @@ Treat us as your pairing partner and talk through your thinking as you work.
 
 ### Acceptance criteria
 
-- [ ] Show each active filter
-- [ ] Allow an individual filter to be removed
-- [ ] Add an option to clear all filters
-- [ ] Update results when filters are removed
+- [ ] The user can see which filters are currently applied
+- [ ] Any single filter can be removed on its own
+- [ ] All filters can be cleared at once
+- [ ] Removing a filter updates the results immediately
 
 ## Story 6: Bookmarkable searches
 
@@ -84,6 +83,6 @@ Treat us as your pairing partner and talk through your thinking as you work.
 
 ### Acceptance criteria
 
-- [ ] Reflect the current search, filters and sort order in the URL
-- [ ] Restore the search when the page opens from that URL
-- [ ] Keep browser back and forward navigation working
+- [ ] The URL reflects the current search, filters and sort order, so the page can be bookmarked or shared
+- [ ] Opening that URL restores the same search
+- [ ] Browser back and forward navigation keeps working
